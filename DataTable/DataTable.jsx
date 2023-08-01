@@ -3,6 +3,7 @@ import './style.css';
 import { useState } from 'react';
 import { SearchBar } from './Subcomponents/SearchBar';
 import { TableHeader } from './Subcomponents/TableHeader';
+import { TableBody } from './Subcomponents/TableBody';
 
 export const DataTable = ({ rows, columns, itemsPerPage = [], searchBar = true }) => {
 
@@ -34,24 +35,8 @@ export const DataTable = ({ rows, columns, itemsPerPage = [], searchBar = true }
             {searchBar && <SearchBar setSearchInput={setSearchInput} />}
             <table width="100%">
                 <TableHeader data={data} setData={setData} headers={headers} setHeaders={setHeaders} rows={rows} />
-                <tbody>
-                    {
-                        data
-                            .filter(searchValues)
-                            .filter((_, id) => id >= (currentPage * showEntries) && id < ((currentPage + 1) * showEntries))
-                            .map((row, id) => (
-                                <tr style={{ background: id % 2 === 0 ? '#F1F1F1' : '#FAFAFA', height: "2rem" }} key={id}>
-                                    {columns.map((col, id) => (
-                                        <td
-                                            style={{ width: col.width, textAlign: "center" }}
-                                            key={id}>{col.type === Date ? new Date(row[col.field]).toLocaleDateString() : row[col.field]}</td>
-                                    ))}
-                                </tr>
-                            ))
-                    }
-                </tbody>
+                <TableBody data={data} searchValues={searchValues} currentPage={currentPage} showEntries={showEntries} columns={columns} />
             </table>
-
         </div>
     )
 }
