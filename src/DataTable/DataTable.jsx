@@ -6,7 +6,7 @@ import { TableHeader } from './Subcomponents/TableHeader';
 import { TableBody } from './Subcomponents/TableBody';
 import { Pagination } from './Subcomponents/Pagination';
 
-export const DataTable = ({ rows, columns, itemsPerPage = [], searchBar = true }) => {
+const DataTable = ({ rows, columns, itemsPerPage = [], searchBar = true }) => {
 
     const [searchInput, setSearchInput] = useState('')
 
@@ -40,10 +40,11 @@ export const DataTable = ({ rows, columns, itemsPerPage = [], searchBar = true }
         <div className='container'>
             {searchBar && <SearchBar setSearchInput={setSearchInput} />}
             <table width="100%">
-                <TableHeader data={data} setData={setData} headers={headers} setHeaders={setHeaders} rows={rows} />
+                <TableHeader data={data} setData={setData}
+                    headers={headers} setHeaders={setHeaders} rows={rows} />
                 <TableBody data={data} searchValues={searchValues} currentPage={currentPage} showEntries={showEntries} columns={columns} />
             </table>
-            <Pagination itemsPerPage={itemsPerPage} showEntries={showEntries} setShowEntries={setShowEntries} data={data} currentPage={currentPage} searchValues={searchValues} setCurrentPage={setCurrentPage} />
+            <Pagination itemsPerPage={itemsPerPage} showEntries={showEntries} setShowEntries={setShowEntries} data={data} currentPage={currentPage} searchValues={searchValues} setCurrentPage={setCurrentPage} columns={columns} />
         </div>
     )
 }
@@ -59,3 +60,5 @@ DataTable.defaultProps = {
     itemsPerPage: [],
     searchBar: true
 }
+
+export default DataTable

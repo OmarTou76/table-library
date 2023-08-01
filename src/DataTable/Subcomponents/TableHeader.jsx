@@ -38,27 +38,28 @@ export const TableHeader = ({ data, setData, headers, setHeaders, rows }) => {
     return (
         <thead>
             <tr>
-                {headers
-                    .map(column => {
-                        <th style={{ width: column.width ?? 'auto' }} key={column.field}
-                            onClick={() => column.sortable !== false && handleSort(column)}>
-                            <div className="table-header">
-                                <span>
-                                    {column.headerName}
-                                </span>
-                                {
-                                    column.sortable !== false &&
-                                    <div className="container-header-icon">
-                                        <div className="header-icon"
-                                            style={{ borderBottom: `8px solid ${column.sortedBy === "DES" ? "blue" : "lightgray"}` }} />
-                                        <div className="header-icon" style={{
-                                            borderTop: `8px solid ${column.sortedBy === "ASC" ? "blue" : "lightgray"}`,
-                                        }} />
-                                    </div>
-                                }
-                            </div>
-                        </th>
-                    })}
+                {headers.map(col =>
+                    <th style={{ width: col.width }} key={col.field}
+                        onClick={() => col.sortable !== false && handleSort(col)}
+                    >
+                        <div className='table-header'>
+                            <span>
+                                {col.headerName}
+                            </span>
+                            {
+                                col.sortable !== false &&
+                                <div className="container-header-icon">
+                                    <div className="header-icon" style={{
+                                        borderBottom: `8px solid ${col.sortedBy === "DES" ? "black" : "lightgray"}`
+                                    }} />
+                                    <div className="header-icon" style={{
+                                        borderTop: `8px solid ${col.sortedBy === "ASC" ? "black" : "lightgray"}`,
+                                    }} />
+                                </div>
+                            }
+                        </div>
+
+                    </th>)}
             </tr>
         </thead>
     )
