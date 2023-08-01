@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import './style.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SearchBar } from './Subcomponents/SearchBar';
 import { TableHeader } from './Subcomponents/TableHeader';
 import { TableBody } from './Subcomponents/TableBody';
+import { Pagination } from './Subcomponents/Pagination';
 
 export const DataTable = ({ rows, columns, itemsPerPage = [], searchBar = true }) => {
 
@@ -20,6 +21,7 @@ export const DataTable = ({ rows, columns, itemsPerPage = [], searchBar = true }
     const [currentPage, setCurrentPage] = useState(0)
 
     const searchValues = (row) => {
+        /* eslint-disable no-unused-vars */
         const { id, ...newRow } = row
         return Object
             .entries(newRow)
@@ -30,6 +32,10 @@ export const DataTable = ({ rows, columns, itemsPerPage = [], searchBar = true }
             .some(([_, values]) => typeof values === 'string' && values.toLowerCase().trim().includes(searchInput.toLowerCase()))
     }
 
+    useEffect(() => {
+        setCurrentPage(0)
+    }, [showEntries, searchInput])
+
     return (
         <div className='container'>
             {searchBar && <SearchBar setSearchInput={setSearchInput} />}
@@ -37,6 +43,7 @@ export const DataTable = ({ rows, columns, itemsPerPage = [], searchBar = true }
                 <TableHeader data={data} setData={setData} headers={headers} setHeaders={setHeaders} rows={rows} />
                 <TableBody data={data} searchValues={searchValues} currentPage={currentPage} showEntries={showEntries} columns={columns} />
             </table>
+            <Pagination itemsPerPage={itemsPerPage} showEntries={showEntries} setShowEntries={setShowEntries} data={data} currentPage={currentPage} searchValues={searchValues} setCurrentPage={setCurrentPage} />
         </div>
     )
 }

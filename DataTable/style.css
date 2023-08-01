@@ -44,3 +44,30 @@ th {
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
 }
+
+.pagination-container {
+    margin: 10px 0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    align-items: center;
+}
+
+.pagination {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}
+
+.pagination-btn {
+    /* background-color: transparent; */
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
