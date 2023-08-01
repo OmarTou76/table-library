@@ -1,0 +1,13 @@
+.container {
+    width: 100%;
+}
+
+.search-container {
+    display: flex;
+    margin: 10px 0;
+    justify-content: space-between;
+}
+.search-container > div {
+    display: flex;
+    gap: 1rem;
+}
