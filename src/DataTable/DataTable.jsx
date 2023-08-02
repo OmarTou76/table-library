@@ -6,6 +6,19 @@ import { TableHeader } from './Subcomponents/TableHeader';
 import { TableBody } from './Subcomponents/TableBody';
 import { Pagination } from './Subcomponents/Pagination';
 
+const DataTableProps = {
+    rows: PropTypes.arrayOf(PropTypes.object).isRequired,
+    columns: PropTypes.arrayOf(PropTypes.object).isRequired,
+    itemsPerPage: PropTypes.arrayOf(PropTypes.number),
+    searchBar: PropTypes.bool
+};
+
+/**
+ * Data table component
+ * @param {React.FC<InferProps<DataTableProps>>}
+ * @returns {React.ReactElement} Table component
+ */
+
 const DataTable = ({ rows, columns, itemsPerPage = [], searchBar = true }) => {
 
     const [searchInput, setSearchInput] = useState('')
@@ -49,12 +62,7 @@ const DataTable = ({ rows, columns, itemsPerPage = [], searchBar = true }) => {
     )
 }
 
-DataTable.propTypes = {
-    rows: PropTypes.arrayOf(PropTypes.object).isRequired,
-    columns: PropTypes.arrayOf(PropTypes.object).isRequired,
-    itemsPerPage: PropTypes.arrayOf(PropTypes.number),
-    searchBar: PropTypes.bool
-}
+DataTable.propTypes = DataTableProps
 
 DataTable.defaultProps = {
     itemsPerPage: [],
