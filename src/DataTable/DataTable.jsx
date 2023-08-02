@@ -55,7 +55,7 @@ const DataTable = ({ rows, columns, itemsPerPage = [], searchBar = true }) => {
             <table width="100%">
                 <TableHeader data={data} setData={setData}
                     headers={headers} setHeaders={setHeaders} rows={rows} />
-                <TableBody data={data} searchValues={searchValues} currentPage={currentPage} showEntries={showEntries} columns={columns} />
+                <TableBody data={data} searchValues={searchValues} currentPage={currentPage} showEntries={showEntries} headers={headers} />
             </table>
             <Pagination itemsPerPage={itemsPerPage} showEntries={showEntries} setShowEntries={setShowEntries} data={data} currentPage={currentPage} searchValues={searchValues} setCurrentPage={setCurrentPage} columns={columns} />
         </div>
