@@ -30,7 +30,7 @@ const DataTable = ({ rows, columns, itemsPerPage = [], searchBar = true }) => {
         sortedBy: null
     })))
 
-    const [showEntries, setShowEntries] = useState(itemsPerPage.length ? itemsPerPage[0] : [data.length])
+    const [showEntries, setShowEntries] = useState(itemsPerPage.length ? itemsPerPage[0] : data.length)
     const [currentPage, setCurrentPage] = useState(0)
 
     const searchValues = (row) => {
