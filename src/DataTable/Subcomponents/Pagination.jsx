@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 
 export const Pagination = ({ itemsPerPage, showEntries, setShowEntries, data, currentPage, searchValues, setCurrentPage }) => {
+
     return (
         <div className="pagination-container">
             <div style={{ display: "flex", gap: '1rem' }}>
