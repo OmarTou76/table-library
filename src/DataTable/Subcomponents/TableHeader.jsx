@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-export const TableHeader = ({ data, setData, headers, setHeaders, rows }) => {
+export const TableHeader = ({ data, setData, headers, setHeaders, rows, theme }) => {
 
     const handleSort = (col) => {
         let sort;
@@ -34,9 +34,12 @@ export const TableHeader = ({ data, setData, headers, setHeaders, rows }) => {
                 })));
     }
 
-
+    const gridColors = {
+        light: theme?.primary?.light ?? 'lightgray',
+        dark: theme?.primary?.dark ?? 'black',
+    }
     return (
-        <thead>
+        <thead style={{ borderColor: theme?.primary?.dark }}>
             <tr>
                 {headers.map(col =>
                     <th style={{ width: col.width }} key={col.field}
@@ -50,10 +53,10 @@ export const TableHeader = ({ data, setData, headers, setHeaders, rows }) => {
                                 col.sortable !== false &&
                                 <div className="container-header-icon">
                                     <div className="header-icon" style={{
-                                        borderBottom: `8px solid ${col.sortedBy === "DES" ? "black" : "lightgray"}`
+                                        backgroundColor: col.sortedBy === "DES" ? gridColors.dark : gridColors.light
                                     }} />
                                     <div className="header-icon" style={{
-                                        borderTop: `8px solid ${col.sortedBy === "ASC" ? "black" : "lightgray"}`,
+                                        backgroundColor: col.sortedBy === "ASC" ? gridColors.dark : gridColors.light
                                     }} />
                                 </div>
                             }
@@ -71,4 +74,5 @@ TableHeader.propTypes = {
     setData: PropTypes.func.isRequired,
     headers: PropTypes.arrayOf(PropTypes.object).isRequired,
     setHeaders: PropTypes.func.isRequired,
+    theme: PropTypes.object,
 }

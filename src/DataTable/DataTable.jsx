@@ -10,7 +10,8 @@ const DataTableProps = {
     rows: PropTypes.arrayOf(PropTypes.object).isRequired,
     columns: PropTypes.arrayOf(PropTypes.object).isRequired,
     itemsPerPage: PropTypes.arrayOf(PropTypes.number),
-    searchBar: PropTypes.bool
+    searchBar: PropTypes.bool,
+    theme: PropTypes.object
 };
 
 /**
@@ -19,7 +20,7 @@ const DataTableProps = {
  * @returns {React.ReactElement} Table component
  */
 
-const DataTable = ({ rows, columns, itemsPerPage = [], searchBar = true }) => {
+const DataTable = ({ rows, columns, itemsPerPage = [], searchBar = true, theme = {} }) => {
 
     const [searchInput, setSearchInput] = useState('')
 
@@ -50,14 +51,14 @@ const DataTable = ({ rows, columns, itemsPerPage = [], searchBar = true }) => {
     }, [showEntries, searchInput])
 
     return (
-        <div className='container'>
-            {searchBar && <SearchBar setSearchInput={setSearchInput} />}
+        <div className='container' style={{ borderColor: theme?.primary?.dark }}>
+            {searchBar && <SearchBar setSearchInput={setSearchInput} theme={theme} />}
             <table width="100%">
                 <TableHeader data={data} setData={setData}
-                    headers={headers} setHeaders={setHeaders} rows={rows} />
-                <TableBody data={data} searchValues={searchValues} currentPage={currentPage} showEntries={showEntries} headers={headers} />
+                    headers={headers} setHeaders={setHeaders} rows={rows} theme={theme} />
+                <TableBody data={data} searchValues={searchValues} currentPage={currentPage} showEntries={showEntries} headers={headers} theme={theme} />
             </table>
-            <Pagination itemsPerPage={itemsPerPage} showEntries={showEntries} setShowEntries={setShowEntries} data={data} currentPage={currentPage} searchValues={searchValues} setCurrentPage={setCurrentPage} columns={columns} />
+            <Pagination itemsPerPage={itemsPerPage} showEntries={showEntries} setShowEntries={setShowEntries} data={data} currentPage={currentPage} searchValues={searchValues} setCurrentPage={setCurrentPage} columns={columns} theme={theme} />
         </div>
     )
 }
