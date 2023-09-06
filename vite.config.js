@@ -11,10 +11,18 @@ export default defineConfig({
   plugins: [react()],
   build: {
     lib: {
-      entry: resolve('src', 'index.js'),
-      name: 'TableLibrary',
+      entry: resolve("./src", 'index.js'),
+      name: 'datatable-lib',
       formats: ['es', 'umd'],
-      fileName: (format) => `table-library.${format}.js`
+      fileName: (format) => `datatable-lib.${format}.js`
     },
+    rollupOptions: {
+      external: ["react", "react-dom"],
+      output: {
+        globals: {
+          react: "React",
+        }
+      }
+    }
   }
 })
