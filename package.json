@@ -1,7 +1,7 @@
 {
   "name": "datatable-lib",
   "private": false,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "React data table library.",
   "type": "module",
   "main": "./src/index.js",
