@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import './style.css';
+// eslint-disable-next-line no-unused-vars
+import React from 'react';
 import { useEffect, useState } from 'react';
 import { SearchBar } from './Subcomponents/SearchBar';
 import { TableHeader } from './Subcomponents/TableHeader';
