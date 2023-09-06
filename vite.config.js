@@ -12,9 +12,9 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve("./src", 'index.js'),
-      name: 'datatable-lib',
+      name: 'react-data-table-lib',
       formats: ['es', 'umd'],
-      fileName: (format) => `datatable-lib.${format}.js`
+      fileName: (format) => `react-data-table-lib.${format}.js`
     },
     rollupOptions: {
       external: ["react", "react-dom"],
