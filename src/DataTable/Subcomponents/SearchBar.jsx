@@ -6,10 +6,11 @@ export const SearchBar = ({ setSearchInput, theme }) => {
     return (
         <div className="search-container">
             <div>
-                <label style={{ color: theme?.text?.dark }}>Search</label>
-                <input type="text" style={{ color: theme?.text?.dark }} onChange={(e) => {
-                    setSearchInput(e.target.value.trim())
-                }} />
+                <label htmlFor="employee-search" style={{ color: theme?.text?.dark }}>Search</label>
+                <input id="employee-search" type="text" style={{ color: theme?.text?.dark }}
+                    onChange={(e) => {
+                        setSearchInput(e.target.value.trim())
+                    }} />
             </div>
         </div>
     )
