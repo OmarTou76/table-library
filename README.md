@@ -14,13 +14,13 @@ or
 
 ## Import the component
 
-```
+```javascript
 import { DataTable } from 'react-data-table-lib'
 ```
 
 ## Example in component
 
-```
+```javascript
 import { DataTable } from 'react-data-table-lib'
 
 const columnsTable = [
