@@ -76,5 +76,7 @@ export default function Employees() {
 
 - **`itemsPerPage` (Array)**: This optional property sets the number of items to display per page. You can specify an array of options, e.g., `[5, 10]`, to allow users to choose the number of items per page (default is `1`).
 
-Feel free to explore further the available properties in the comprehensive documentation of **React Data Table Component** for an in-depth understanding of all the features and options provided by the library.
 
+## NPM Link
+
+https://www.npmjs.com/package/react-data-table-lib
